@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadelyn Lara Nepomuceno | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="/images/portfolio_favicon.jpg">
+
+    <style>
+        :root {
+            --ryza-dust: #F3620F;
+            --mikado-yellow: #FFC20A;
+            --flat-green: #67944B;
+            --fanfare: #078D8C;
+            --lyons-blue: #084973;
+            --piercing-red: #DA0D1E;
+            
+            --text-dark: #1A1A1A;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #FFF4D2 0%, #FFE3BA 100%);
+            color: var(--text-dark);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevents scrollbar issues from particles */
+        }
+
+        /* --- NAVIGATION & HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 244, 210, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--mikado-yellow);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            text-decoration: none; 
+            color: var(--lyons-blue);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--ryza-dust);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--ryza-dust);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- MAIN LAYOUT --- */
+        .app-info {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            scroll-margin-top: 120px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2.section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--lyons-blue);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2.section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 5px;
+            background: var(--flat-green);
+            border-radius: 2px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 5rem; 
+            margin-bottom: 8rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-img-wrapper {
+            flex-shrink: 0;
+            width: 270px;
+            height: 270px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            overflow: hidden;
+            margin-left: 20px;
+            box-shadow: 
+                0 0 0 6px var(--fanfare),
+                0 0 0 12px var(--mikado-yellow),
+                0 0 0 18px var(--ryza-dust),
+                0 25px 45px rgba(8, 73, 115, 0.2);
+            background: var(--white);
+            animation: morph 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+        }
+
+        .profile-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--piercing-red);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--fanfare);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            max-width: 700px;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--mikado-yellow);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+            border-top: 5px solid transparent;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--fanfare), var(--lyons-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(8, 73, 115, 0.12);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--lyons-blue);
+            margin-bottom: 0.4rem;
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            background: var(--mikado-yellow);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+        }
+
+        .card ul {
+            margin-left: 1.2rem;
+            color: var(--text-dark);
+            list-style-type: none;
+        }
+
+        .card li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: '✦';
+            color: var(--ryza-dust);
+            position: absolute;
+            left: -1.5rem;
+            top: 0;
+        }
+
+        /* --- SKILLS BADGES --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-badge {
+            background-color: var(--white);
+            color: var(--lyons-blue);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border: 2px solid var(--fanfare);
+            transition: all 0.3s ease;
+            cursor: default;
+            position: relative;
+            z-index: 10;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--fanfare);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--lyons-blue);
+            font-weight: 700;
+            margin-top: 4rem;
+            border-top: 2px dashed var(--flat-green);
+        }
+
+        /* --- CURSOR PARTICLE STYLES --- */
+        .cursor-particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: floatFade 0.8s ease-out forwards;
+            transform: translate(-50%, -50%);
+        }
+
+        /* --- MUSIC BUTTON --- */
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--ryza-dust); 
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(243, 98, 15, 0.3);
+            z-index: 10000; 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .music-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: var(--mikado-yellow);
+            color: var(--lyons-blue);
+            box-shadow: 0 12px 25px rgba(255, 194, 10, 0.4);
+        }
+
+        .music-btn.playing {
+            background: var(--flat-green);
+            box-shadow: 0 8px 20px rgba(103, 148, 75, 0.3);
+        }
+
+        @keyframes floatFade {
+            0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -150%) scale(0.3); }
+        }
+
+        @media (max-width: 768px) {
+            .hero { text-align: center; flex-direction: column; gap: 2.5rem; margin-bottom: 4rem;}
+            .hero h1 { font-size: 2.8rem; }
+            .hero h2 { font-size: 1.2rem; }
+            .hero p { margin: 0 auto; text-align: left;}
+            .nav-links { gap: 1rem; justify-content: center; }
+            .nav-links a { font-size: 0.85rem; }
+            .profile-img-wrapper { width: 220px; height: 220px; margin-left: 0; }
+        }
+    </style>
+</head> 
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#professional-summary">Summary</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#work-experience">Experience</a></li>
+                    <li><a href="#leadership">Leadership</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app-info">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="professional-summary">
+            <div class="profile-img-wrapper">
+                <img src="/images/Portfolio_Profile.jpg" alt="Jadelyn Lara Nepomuceno">
+            </div>
+            
+            <div class="hero-text">
+                <h1>Hello, I'm <span>Jade</span></h1>
+                <h2>3rd Year BSIT Student | Front-End Developer Aspirant</h2>
+                <p>I am a Bachelor of Science in Information Technology student at the Polytechnic University of the Philippines with a strong foundation in both software development and visual storytelling. My technical toolkit includes Java, Python, SQL, and web development using HTML, CSS, and JavaScript, alongside hands-on experience with MySQL Workbench and VSCode. Beyond writing code and crafting digital interfaces, I bring projects to life through event photography, video documentation, and social media management for my local community in Barangay San Roque. I thrive at the intersection of technical problem-solving and creative design.</p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="card">
+                <h3>Linkup PUP</h3>
+                <h4>Social Media Platform for PUP Student Organizations(Figma Mockup)</h4>
+                <ul>
+                    <li>Designed and developed a specialized social media platform to centralize and showcase all ongoing and upcoming student organizations at PUP, Sta. Mesa.</li>
+                    <li>Integrated community sharing features including algorithmic feeds and posts by student leaders to foster engagement.</li>
+                    <li>Incorporated short-form video reels to highlight relevant events, achievements, and the organizational culture as a whole.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <h3>Polytechnic University of the Philippines</h3>
+                <h4>2024 - Present | BS Information Technology | Dean's Lister</h4>
+                <ul>
+                    <li>Relevant Coursework: Human-Computer Interaction, Object-Oriented Programming (Java), Information Management (Database/ERD Design), Network Administration (Cisco).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="work-experience">
+            <h2 class="section-title">Work Experience</h2>
+            
+            <div class="card">
+                <h3>Secretariat Member - Office of Rep. Stella Quimbo</h3>
+                <h4>2025 - Present | Government Internship Program</h4>
+                <ul>
+                    <li>Provided administrative, documentation, and operational support during official activities, demonstrating strong organizational, coordination, and process management skills.</li>
+                    <li>Assisted in handling digital records, reports, and internal communications, to support efficient office operations.</li>
+                    <li>Managed and maintained the local database for Rep. Stella Quimbo’s team in Barangay San Roque, Marikina City, ensuring data accuracy, proper organization, and strict confidentiality.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Database & Census System Administrator</h3>
+                <h4>Barangay San Roque, Marikina City</h4>
+                <ul>
+                    <li>Managed and maintained the local database and census information system, ensuring accurate data entry, data integrity, and secure record-keeping.</li>
+                    <li>Organized, updated, and validated large datasets to support barangay planning, reporting, and decision-making.</li>
+                    <li>Implemented data confidentiality and privacy practices, handling sensitive personal information responsibly and in compliance with data protection standards.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Social Media & Digital Content Handler</h3>
+                <h4>Barangay San Roque, Marikina City</h4>
+                <ul>
+                    <li>Managed and maintained the barangay’s official social media pages, ensuring timely posting, audience engagement, and accurate dissemination of information.</li>
+                    <li>Monitored digital interactions, analyzed engagement metrics, and optimized content strategies to improve reach and community communication.</li>
+                    <li>Utilized digital tools and platforms to organize, schedule, and track content, demonstrating proficiency in online platforms, data analytics, and digital communication technologies.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Photographer</h3>
+                <h4>Barangay San Roque, Marikina City</h4>
+                <ul>                   
+                    <li>Documented official events and community programs, managing digital files, photo archiving, and content organization for official records and publications.</li> 
+                    <li>Supported the barangay’s digital presence by producing high-quality visual documentation for reports, social media, and official materials.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Leadership and Affiliations Section -->
+        <section id="leadership">
+            <h2 class="section-title">Leadership & Affiliations</h2>
+            
+            <div class="card">
+                <h3>Documentation Co-Lead</h3>
+                <h4>Google Developer Groups (GDG) on Campus PUP | 2025 – 2026</h4>
+            </div>
+
+            <div class="card">
+                <h3>Marketing Department—Content Strategist & Video Director</h3>
+                <h4>Cisco NetConnect PUP | 2026 - present</h4>
+            </div>
+
+            <div class="card">
+                <h3>Web Development Department Member</h3>
+                <h4>AWS Cloud Club PUP-Manila | Late 2025 – Present</h4>
+            </div>
+
+            <div class="card">
+                <h3>Registered Volunteer</h3>
+                <h4>Developers Connect Philippines (DEVCON)</h4>
+            </div>
+
+            <div class="card">
+                <h3>Sanggunian ng Kabataan (SK) Aspirant</h3>
+                <h4>2026</h4>
+                <ul>
+                    <li>Served as Project Head alongside co-head Bien for the first-ever Little Miss San Roque pageant, overseeing project planning, coordination, program development, and candidate management.</li>
+                    <li>Served as the sole speaker responsible for delivering the event's welcoming remarks.</li>
+                    <li>Engaged in youth-oriented community initiatives and local civic activities.</li>
+                    <li>Participated in community programs and youth engagement efforts focused on public service and barangay development.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Music Ministry Head</h3>
+                <h4>YFC East B7B | 2019 - Present</h4>
+                <ul>
+                    <li>Led and coordinated team activities, mentoring members and managing events.</li>   
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Toolkit</h2>
+            <div class="skills-container">
+                <div class="skill-badge">Project Management</div>
+                <div class="skill-badge">UI/UX Prototyping (Figma)</div>
+                <div class="skill-badge">Web Dev (HTML, CSS, JS)</div>
+                <div class="skill-badge">OOP (Java, Python)</div>
+                <div class="skill-badge">Legacy Systems (COBOL)</div>
+                <div class="skill-badge">Database Management (MySQL)</div>
+                <div class="skill-badge">Network Admin (Cisco Packet Tracer)</div>
+                <div class="skill-badge">Digital Content Management</div>
+                <div class="skill-badge">VSCode Environment</div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- BACKGROUND MUSIC -->
+    <audio id="bg-music" autoplay loop>
+        <source src="/music/Littleroot - bgmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" class="music-btn playing">
+        ⏸ Pause Music
+    </button>
+
+    <!-- Footer -->
+    <footer id="references">
+        <p>References available upon request.</p>
+    </footer>
+
+    <!-- FUN CURSOR & MUSIC SCRIPT -->
+    <script>
+        // --- MUSIC PLAYER LOGIC ---
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-toggle');
+        
+        music.volume = 0.3; // 30% volume
+
+        let playPromise = music.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                musicBtn.textContent = '⏸ Pause Music';
+                musicBtn.classList.add('playing');
+            }).catch(error => {
+                musicBtn.textContent = '🎵 Play Music';
+                musicBtn.classList.remove('playing');
+            }); 
+        }
+
+        musicBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                musicBtn.textContent = '⏸ Pause Music';
+                musicBtn.classList.add('playing');
+            } else {
+                music.pause();
+                musicBtn.textContent = '🎵 Play Music';
+                musicBtn.classList.remove('playing');
+            }
+        });
+
+        // --- CURSOR PARTICLE LOGIC ---
+        const colors = ['#F3620F', '#FFC20A', '#67944B', '#078D8C', '#084973', '#DA0D1E'];
+        let lastParticleTime = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastParticleTime > 30) {
+                const particle = document.createElement('div');
+                particle.className = 'cursor-particle';
+                
+                const size = Math.random() * 8 + 6;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${e.clientX}px`;
+                particle.style.top = `${e.clientY}px`;
+                
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.backgroundColor = randomColor;
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 800);
+                
+                lastParticleTime = now;
+            }
+        });
+    </script>
+</body>
+</html>
